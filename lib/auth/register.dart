@@ -10,7 +10,7 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
-  GlobalKey _formkey = GlobalKey<FormState>();
+  final GlobalKey _formkey = GlobalKey<FormState>();
   FocusNode myfocusnode1 = FocusNode();
   FocusNode myfocusnode2 = FocusNode();
   FocusNode myfocusnode3 = FocusNode();
@@ -23,13 +23,13 @@ class _RegisterState extends State<Register> {
 
   List<DropdownMenuItem<String>> get dropdownItems {
     List<DropdownMenuItem<String>> menuItems = [
-      DropdownMenuItem(
+      const DropdownMenuItem(
           child: Text(
             "Customer",
             // style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
           ),
           value: "Customer"),
-      DropdownMenuItem(child: Text("Vander"), value: "Vander"),
+      const DropdownMenuItem(child: Text("Vander"), value: "Vander"),
     ];
     return menuItems;
   }
@@ -38,8 +38,7 @@ class _RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    String? selectedValue = null;
-    final _dropdownFormKey = GlobalKey<FormState>();
+    String? selectedValue;
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -107,27 +106,27 @@ class _RegisterState extends State<Register> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 20),
-                    child: Container(
+                    child: SizedBox(
                       height: height * 0.075,
                       width: width * 0.5,
                       child: DropdownButtonFormField(
-                          hint: Text("Select"),
+                          hint: const Text("Select"),
                           disabledHint: Text("Select"),
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
                               borderSide:
-                                  BorderSide(color: Colors.grey, width: 1),
+                                  const BorderSide(color: Colors.grey, width: 1),
                             ),
                             enabled: true,
                             enabledBorder: OutlineInputBorder(
                               borderSide:
-                                  BorderSide(color: Colors.grey, width: 1),
+                                  const BorderSide(color: Colors.grey, width: 1),
                               borderRadius: BorderRadius.circular(15),
                             ),
                             border: OutlineInputBorder(
                               borderSide:
-                                  BorderSide(color: Colors.grey, width: 1),
+                                  const BorderSide(color: Colors.grey, width: 1),
                               borderRadius: BorderRadius.circular(15),
                             ),
                             // filled: true,
@@ -157,9 +156,9 @@ class _RegisterState extends State<Register> {
                           name: "Register",
                           onpress: () {
                             Navigator.pushNamed(context, "/login");
-                            if (_dropdownFormKey.currentState!.validate()) {
-                              //valid flow
-                            }
+                            // if (_dropdownFormKey.currentState!.validate()) {
+                            //   //valid flow
+                            // }
                           },
                           backgroundcolor: AllColors.primarycolor),
                     ),
@@ -173,11 +172,7 @@ class _RegisterState extends State<Register> {
     );
   }
 
-  handleonpress(int value) {
-    setState(() {
-      groupvalue = value;
-    });
-  }
+
 
   Padding textfields(double height, double width, String title, Icon icon,
       var conterollers, var check,

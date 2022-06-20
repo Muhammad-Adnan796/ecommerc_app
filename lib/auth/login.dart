@@ -86,7 +86,9 @@ class _LoginState extends State<Login> {
                       width: width * 0.4,
                       child: CustomButton(
                           name: "Signin",
-                          onpress: () {},
+                          onpress: () {
+                             Navigator.pushNamed(context, "/home");
+                          },
                           backgroundcolor: AllColors.primarycolor),
                     ),
                   ),
